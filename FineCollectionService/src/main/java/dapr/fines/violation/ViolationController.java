@@ -2,6 +2,7 @@ package dapr.fines.violation;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import io.dapr.Topic;
+import io.dapr.client.domain.CloudEvent;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -23,14 +24,8 @@ public class ViolationController {
 
     @Topic(name = "speedingviolations", pubsubName = "pubsub")
     @PostMapping(path = "/collectfine")
-    public ResponseEntity<Void> registerViolation(@RequestBody final JsonNode event) {
-        var data = event.get("data");
-        var violation = new SpeedingViolation(
-                data.get("licenseNumber").asText(),
-                data.get("roadId").asText(),
-                data.get("excessSpeed").asInt(),
-                LocalDateTime.parse(data.get("timestamp").asText())
-        );
+    public ResponseEntity<Void> registerViolation(@RequestBody final CloudEvent<SpeedingViolation> event) {
+        var violation = event.getData();
         violationProcessor.processSpeedingViolation(violation);
         return ResponseEntity.ok().build();
     }
