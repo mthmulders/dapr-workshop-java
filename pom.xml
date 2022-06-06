@@ -90,6 +90,15 @@
                 <scope>import</scope>
             </dependency>
             <dependency>
+                <groupId>io.projectreactor</groupId>
+                <artifactId>reactor-core</artifactId>
+                <!--
+                 Dapr SDK declares 3.3.11.RELEASE, but Maven resolves to 3.4.7
+                 due to Spring Boot Dependencies BOM 2.5.2 pulling in Reactor BOM 2020.0.08
+                -->
+                <version>3.4.7</version>
+            </dependency>
+            <dependency>
                 <groupId>org.slf4j</groupId>
                 <artifactId>slf4j-api</artifactId>
                 <version>1.7.31</version>
