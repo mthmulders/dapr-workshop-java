@@ -20,6 +20,7 @@
         <maven.compiler.release>16</maven.compiler.release>
 
         <spring-boot.version>2.5.2</spring-boot.version>
+        <spring-cloud-release-train.version>2020.0.4</spring-cloud-release-train.version>
         <dapr-sdk.version>1.3.1</dapr-sdk.version>
     </properties>
 
@@ -78,6 +79,13 @@
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-dependencies</artifactId>
                 <version>${spring-boot.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-dependencies</artifactId>
+                <version>${spring-cloud-release-train.version}</version>
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
