@@ -1,4 +1,6 @@
 spring:
+  application:
+    name: Simulation
   jackson:
     serialization:
       write-dates-as-timestamps: false

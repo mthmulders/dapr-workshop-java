@@ -1,4 +1,6 @@
 spring:
+  application:
+    name: VehicleRegistrationService
   jackson:
     serialization:
       write-dates-as-timestamps: false
