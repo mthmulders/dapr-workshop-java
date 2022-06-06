@@ -6,6 +6,9 @@ spring:
       write-dates-as-timestamps: false
   main:
     banner-mode: off
+  sleuth:
+    propagation:
+      type: w3c
 
 simulation:
   # How much traffic lanes and cameras to simulate
